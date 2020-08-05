@@ -1,5 +1,7 @@
 RUN:
-	gcc -c add.c subt.c auxillaryFunc.c
-	ar cr libbignum.a add.o subt.o auxillaryFunc.o
-	gcc -g test.c -L. -lbignum
-	./a.out
+	gcc -c ./src/add.c -o ./obj/add.o
+	gcc -c ./src/subt.c -o ./obj/subt.o
+	gcc -c ./src/auxillaryFunc.c -o ./obj/auxillaryFunc.o
+	ar cr ./lib/libbignum.a ./obj/add.o ./obj/subt.o ./obj/auxillaryFunc.o
+	gcc -g ./src/test.c ./lib/libbignum.a -o ./bin/test
+	./bin/test
