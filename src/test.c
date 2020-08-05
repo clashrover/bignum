@@ -14,39 +14,27 @@ int main(){
     }
     s1[i-1]='\0';
     s2[i-1]='\0';
-    s1[0]='0';
-    s1[1]='0';
-    s1[2]='0';
-    s1[3]='0';
+    s1[0]='-';
     s1[4]='.';
-    s1[5]='0';
-    s1[49]='0';
-    s1[48]='0';
-    s1[47]='0';
-    s1[46]='0';
-    s2[49]='0';
+    s2[0]='-';
     printf("arg1     :   %s\n",s1);
     printf("arg2     :   %s\n",s2);
-    parse(s1);
-    parse(s2);
     // printf("compare s1 and s2 - %d\n",greaterThan(s1,s2));
-    char* s3 = (char*) malloc((strlen(s1)+strlen(s2)+1)*sizeof(char));
-    if(add(s1,s2,s3)!=0){
+    char* s3 = (char*) malloc((strlen(s1)+strlen(s2)+2)*sizeof(char));
+    if(bignum_add(s1,s2,s3)!=0){
         perror("error in Add");
     }
     printf("sum      :   %s\n",s3);
     char* s4 = (char*) malloc((strlen(s1)+strlen(s2)+1)*sizeof(char));
-    if(subt(s1,s2,s4)!=0){
+    if(bignum_subt(s1,s2,s4)!=0){
         perror("error in SUBT");
     }
     printf("diff     :   %s\n",s4);
-    if(add(s1,s4,s3)!=0){
-        perror("error in Add");
-    }
-    printf("sum      :   %s\n",s3);
+    // if(add(s1,s4,s3)!=0){
+    //     perror("error in Add");
+    // }
+    // printf("sum      :   %s\n",s3);
     free(s1);
     free(s2);
-    free(s4);
-    free(s3);
     free(s3);
 }
