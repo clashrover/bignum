@@ -66,12 +66,47 @@ int greaterThan(char* s11, char*s22){
 }
 
 void parse(char* s){
+    // remove leading zeroes
+    // if decimal there remove trailing zeroes
     // 00000000213.1231     ->  213.1231
     // -000123123.123       -> -123123.123
     // .123123              ->  0.123123
     // 000000.123210000000  ->  0.12321
     // -0.123               -> -0.123
 
+    int k=0;
+    int i=0;
+    if(s[k]=='-'){
+        k++;
+        i++;
+    }
+    while(s[k]=='0'){
+        k++;
+    }
+    while(k<=strlen(s)){
+        s[i]=s[k];
+        i++;
+        k++;
+    }
+    // printf("remove leading 0s %s\n",s);
 
+    reverse(s);
+    int* d = (int*)malloc(sizeof(int));
+    getDecimal(s,d);
+    if(*d != 0){
+        k=0;
+        while(s[k]=='0'){
+            k++;
+        }
+        i=0;
+        while(k<=strlen(s)){
+            s[i]=s[k];
+            i++;
+            k++;
+        }
+    }
+    reverse(s);
+    // printf("removed trailing 0s after decimal %s\n",s);
+    free(d);
 
 }

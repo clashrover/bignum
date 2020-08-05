@@ -21,8 +21,6 @@ int subt(char* s1, char* s2, char* s3){
     }
     reverse(s11);
     reverse(s22);
-    printf("rev1 %s\n",s11);
-    printf("rev2 %s\n",s22);
     int* d1 = (int*) malloc(sizeof(int));
     int* d2 = (int*) malloc(sizeof(int));
 
@@ -62,8 +60,6 @@ int subt(char* s1, char* s2, char* s3){
             k++;
         }
     }
-    s3[k]='\0';
-    printf("%s\n",s3);
     int j=0;
     int i=0;
     if(diff<0){
@@ -99,9 +95,7 @@ int subt(char* s1, char* s2, char* s3){
         i++;
     }
     
-    s3[k]='\0';
-    printf("%s\n",s3);
-    while(i<strlen(s1) && j<strlen(s2)){
+    while(i<strlen(s11) && j<strlen(s22)){
         int r1=s11[i]-'0';
         r1-=carry;
         int r2=s22[j]-'0';
@@ -117,8 +111,6 @@ int subt(char* s1, char* s2, char* s3){
         j++;
         k++;
     }
-    s3[k]='\0';
-    printf("%s\n",s3);
     while(i<strlen(s11)){
         int r1=s11[i]-'0';
         r1-=carry;
